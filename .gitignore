@@ -1,0 +1,8 @@
+AGENTS.md
+LEARNING_PLAN.md
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
+*.log
+
