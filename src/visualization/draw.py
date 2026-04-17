@@ -12,7 +12,7 @@ def load_data():
     return raw_df, features_df
 
 
-def draw_2d():
+def draw_2d() -> None:
     df, tf = load_data()
 
     fig, ax = plt.subplots(3, 1, figsize=(12, 14))
@@ -33,7 +33,7 @@ def draw_2d():
     plt.colorbar(sc1, ax=ax[1], label="Curvature")
     plt.show()
 
-def draw_3d():
+def draw_3d() -> None:
     
     df, tf = load_data()
     

@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[2]
 # m: kaç metreyi bir nokta olarak kabul etmek istediğimiz.
 # Minimum 1 olabilir burada 1320 nin tam böleni olmak zorundaki verilerde kayma yada boş satır sorunu görmeyelim
 
-def read(m):
+def read(m) -> dict:
 
     csv_path = ROOT / "data" / "raw" / "sem_2025_eu.csv"
     df = pd.read_csv(csv_path) #n
@@ -52,7 +52,7 @@ def read(m):
     }
     
 
-def create_feature_table():
+def create_feature_table() -> None:
     data = read(8)
 
     output_path = ROOT / "data" / "processed" / "track_features.csv"

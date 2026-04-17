@@ -1,4 +1,4 @@
-[Shell-eco-marathon]
+[project]
 name = "Shell-eco-marathon"
 version = "0.1.0"
 description = "Track and eco-driving analysis"
@@ -7,5 +7,6 @@ dependencies = [
     "matplotlib>=3.10.8",
     "numpy>=2.4.4",
     "pandas>=3.0.2",
+    "rich>=15.0.0",
 ]
 
