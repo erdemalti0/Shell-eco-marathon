@@ -112,6 +112,8 @@ def validate_raw(raw_track_data: str | Path) -> None:
 
     console.print("\n[bold cyan]==============================================\n")
 
+    total_problems = 0
+
     nan_dict = check_missing_values(df)
 
     if nan_dict:
@@ -122,6 +124,8 @@ def validate_raw(raw_track_data: str | Path) -> None:
                 f"[bold red]NaN sayısı : {nan_dict.get(key)[0]}",
                 f"[bold red]Satır : {nan_dict.get(key)[1]}"
                 )
+            
+            total_problems += 1
     else:
         console.print(
             "[bold green]Sütunlarda eksik veri yok.",
@@ -137,6 +141,8 @@ def validate_raw(raw_track_data: str | Path) -> None:
             console.print(
                 f"[bold red]{key} : {problem_dict.get(key)}"
             )
+
+            total_problems += 1
     else:
         console.print(
             "[bold green]Distance sütununda anormal bir veri yok.",
@@ -152,6 +158,8 @@ def validate_raw(raw_track_data: str | Path) -> None:
             console.print(
                 f"[bold red]{key} : {problem_dict.get(key)}"
             )
+
+            total_problems += 1
     else:
         console.print(
             "[bold green]Geometrik adım uzunluklarında anormal bir veri yok.",
@@ -159,6 +167,25 @@ def validate_raw(raw_track_data: str | Path) -> None:
 
     console.print("\n[bold cyan]==============================================\n")
 
+
+    total_lines = len(df)
+
+    if total_problems > 0.3 * total_lines:
+        console.print(
+            "[bold red]---FAIL--- ",
+            f"\n[bold red]Total : {total_problems} exist"
+            )
+    elif total_problems > 0:
+        console.print(
+            "[bold yellow]---WARNING--- ",
+            f"\n[bold yellow]Total : {total_problems} problem exist"
+            )
+    else:
+        console.print(
+            "[bold green]---PASS--- ",
+            f"\n[bold green]Ther is no any problem"
+            )
+    
 if __name__ == "__main__":
 
     ROOT = Path(__file__).resolve().parents[2]
