@@ -67,7 +67,7 @@ def read(m) -> dict:
 
 
 def create_feature_table() -> None:
-    data = read(8)
+    data = read(1)
 
     output_path = ROOT / "data" / "processed" / "track_features.csv"
 

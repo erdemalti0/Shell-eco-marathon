@@ -4,7 +4,7 @@ from pathlib import Path
 
 def load_data():
     root = Path(__file__).resolve().parents[2]
-    raw_path = root / "data" / "raw" / "sem_2025_eu.csv"
+    raw_path = root / "data" / "generated" / "GeneratedTrack.csv"
     features_path = root / "data" / "processed" / "track_features.csv"
 
     raw_df = pd.read_csv(raw_path)
